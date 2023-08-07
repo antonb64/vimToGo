@@ -1,0 +1,2 @@
+GuiFont JetBrains Mono
+GuiRenderLigatures 1
