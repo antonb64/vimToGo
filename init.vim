@@ -9,6 +9,12 @@ Plug 'ojroques/nvim-hardline'
 Plug 'numToStr/FTerm.nvim'
 Plug 'tanvirtin/vgit.nvim'
 Plug 'folke/which-key.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'folke/noice.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'ThePrimeagen/harpoon'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 call plug#end()
 
 " Coc configuration
@@ -31,6 +37,10 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
+nnoremap <leader>hg <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
+nnoremap <leader>hm <cmd>lua require("harpoon.mark").add_file()<cr>
+nnoremap <leader>hn <cmd>lua require("harpoon.ui").nav_next()<cr>
+nnoremap <leader>hp <cmd>lua require("harpoon.ui").nav_prev()<cr>
 
 colorscheme mellifluous
 
@@ -38,7 +48,7 @@ syntax on
 set hlsearch
 set smartcase
 set autoindent
-set number relativenumber
+set number
 set confirm
 set expandtab
 set smarttab
@@ -51,5 +61,15 @@ set noswapfile
 
 set hidden
 set autoread
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
 
+lua require('diagnostics')
+
+" Setup the bufferline
+set termguicolors
+lua << EOF
+require("bufferline").setup{}
+EOF
 
